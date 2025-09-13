@@ -133,7 +133,41 @@ let showMenu = false;
 		showMenu = false;
 	 }
 		
-	})
+	
+	// function showSubMenu() {
+	// 	if (showMenu) {
+	// 		subMenuEl.style.top = '100%';
+	// 	} else {
+	// 		subMenuEl.style.top = '0';
+	// 	}
+	// }
+})
+
+subMenuEl.addEventListener(
+	'click',
+	function (event) {
+		event.preventDefault();
+		const link = event.target;
+		if (link.tagName !== 'A')
+			return;
+		console.log(link.innerText);
+		
+		showingSubMenu = false;
+		subMenuEl.style.top = '0';
+	
+		topMenuLinks.forEach(function (
+			link,
+		) {
+			link.classList.remove(
+				'active',
+			);
+		});
+	
+		mainEl.innerHTML = `<h1>${link.innerText}</h1>`;
+	},
+);
+
+
 	//	The event listener should add the active class to the <a> element that was clicked, unless it was already active, in which case it should remove it.
 // 	topMenuLinks.forEach(function (link) {
 // 	link.addEventListener('click', function (event) {
