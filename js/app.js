@@ -1,6 +1,6 @@
 // import '.css/styles.css';
 // Menu data structure
-var menuLinks = [
+let menuLinks = [
 	{ text: 'about', href: '/about' },
 	{
 		text: 'catalog',
@@ -54,13 +54,13 @@ var menuLinks = [
 	},
 ];
 
-
+//create a variable to store the value the main element
 const mainEl = document.querySelector('main')
 mainEl.style.backgroundColor = 'var(--main-bg)';
 mainEl.innerHTML = '<h1>DOM Manipulation</h1>';
 mainEl.classList.add('flex-ctr');
 
-// console.log(mainEl)
+ console.log(mainEl)
 // topMenuEl styling
 const topMenuEl = document.getElementById('top-menu');
 topMenuEl.style.height = '100%';
@@ -84,65 +84,81 @@ for(let menuLink of menuLinks) {
     console.log(link)
 }
 
-// Part 3: Creating the Submenu
+// Part 3: Creating and styling the Submenu
 
+// selecting the sub-menu element on the page and caching it in a variable named subMenuEl
 const subMenuEl = document.getElementById('sub-menu',);
+
+// for (let menuLink of menuLinks) {
+
+// }
+// styling sub-menu
 subMenuEl.style.height = '100%';
 subMenuEl.style.backgroundColor = 'var(--sub-menu-bg)';
 subMenuEl.classList.add('flex-around');
-
-subMenuEl.style.position = 'absolute';
-subMenuEl.style.top = '0';
+// position of the submenu to temporarily hide it
+// subMenuEl.style.position = 'absolute';
+// subMenuEl.style.top = '0';
 
 // Part 4 Adding Menu Interaction
-
+// Select and cache the all of the <a> elements inside of topMenuEl in a variable named topMenuLinks.
 const topMenuLinks = topMenuEl.querySelectorAll('#top-menu a');
-console.log(topMenuLinks)
+console.log('topMenuLinks', topMenuLinks)
 let showMenu = false;
 
 
  topMenuEl.addEventListener('click', function (event) {
-// 	// call the event object's preventDefault() method.
+	 // 	// call the event object's preventDefault() method.
+	 console.log(event.currentTarget === this);
+	 console.log('event', event.target.textContent)
+	 console.log(a);
+	 console.log(this.className);
  	event.preventDefault();
 	 // 	// immediately return if the element clicked was not an <a> element.
-	 const link = event.target.textContent;
  	if (event.target.textContent !== 'a') return;
-	 console.log(link)
-		 
-	 if (link.classList.contains('active')) {
-		link.classList.remove('active');
-		subMenuEl.style.top = '0';
-	 }
-
-	 topMenuLinks.forEach(function (link) {
-		link.classList.remove('active');
-	 });
+	 
+	 if (topMenuLinks) {
+		 topMenuLinks.addEventListener('click', function (event) {
+			 if (event.target.textContent === 'a') {
+				 console.log(event.currentTarget === this);
+			}
+		})
+	}
+	
+	//  if (link.classList.contains('active')) {
+		// 	link.classList.remove('active');
+		// 	subMenuEl.style.top = '0';
+		//  }
 		
-	 link.classList.add('active');
+		//  topMenuLinks.forEach(function (link) {
+			// 	link.classList.remove('active');
+			//  });
+			
+			//  link.classList.add('active');
+			
+			//  const linkData = menuLinks.find(function (linkObject) {
+				// 	return linkObject.text === link;
+				//  });
+				//  console.log(linkData)
+				//  if (linkData.subLinks) {
+					// 	 showMenu = true;
+					// 	 subMenuEl.style.top = '100%';
 
-	 const linkData = menuLinks.find(function (linkObject) {
-		return linkObject.text === link;
-	 });
-	 console.log(linkData)
-	 if (linkData.subLinks) {
-		 showMenu = true;
-		 subMenuEl.style.top = '100%';
-
-	 } else {
-		 subMenuEl.style.top = '0';
-		showMenu = false;
-	 }
+	//  } else {
+	// 	 subMenuEl.style.top = '0';
+	// 	showMenu = false;
+	//  }
 		
 	
 	// function showSubMenu() {
 	// 	if (showMenu) {
-	// 		subMenuEl.style.top = '100%';
-	// 	} else {
-	// 		subMenuEl.style.top = '0';
-	// 	}
-	// }
-})
-
+		// 		subMenuEl.style.top = '100%';
+		// 	} else {
+			// 		subMenuEl.style.top = '0';
+			// 	}
+			// }
+		})
+		
 subMenuEl.addEventListener(
 	'click',
 	function (event) {
@@ -188,6 +204,6 @@ subMenuEl.addEventListener(
 
 
 
-console.log(a)
+
 console.log(topMenuLinks);
 console.log(subMenuEl)

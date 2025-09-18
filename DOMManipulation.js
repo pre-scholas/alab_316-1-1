@@ -3,8 +3,8 @@ const mainEl = document.querySelector("main");
 mainEl.style.backgroundColor = "var(--main-bg)";
 
 const heading = document.createElement("h1");
-const headingtitle = document.createTextNode("DOM Manipulation");
-heading.appendChild(headingtitle);
+const headingTitle = document.createTextNode("DOM Manipulation");
+heading.appendChild(headingTitle);
 heading.style.color = "white";
 mainEl.appendChild(heading);
 mainEl.classList.add('flex-ctr')
